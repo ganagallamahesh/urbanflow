@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanFlow - Pressure-Aware Urban Coordination System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- 1. HEADER AND OVERVIEW -->
+    <header class="hero-header">
+      <div class="badge header-tag">Hackathon Prototype</div>
+      <h1 class="brand-title">URBANFLOW</h1>
+      <p class="brand-subtitle">Pressure-Aware Coordination for Growing Urban Networks</p>
+      
+      <div class="overview-box">
+        <p class="overview-text">
+          UrbanFlow analyzes demand and available capacity across urban systems and recommends better alternatives before congestion and overload occur.
+        </p>
+        <div class="quote-box">
+          <span class="quote-icon">💡</span>
+          <strong>Core Idea:</strong> "Before assigning a vehicle or recommending an urban resource, check current demand, available capacity, congestion, and possible alternatives to reduce overall system pressure."
+        </div>
+      </div>
+
+      <!-- Simple Visual Flow -->
+      <div class="flow-container">
+        <div class="flow-title">UrbanFlow Coordination Concept</div>
+        <div class="flow-steps">
+          <div class="step-card">
+            <span class="step-num">1</span>
+            <span class="step-label">Growing Demand</span>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="step-card">
+            <span class="step-num">2</span>
+            <span class="step-label">Pressure Detection</span>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="step-card">
+            <span class="step-num">3</span>
+            <span class="step-label">Check Available Capacity</span>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="step-card">
+            <span class="step-num">4</span>
+            <span class="step-label">Find Alternatives</span>
+          </div>
+          <div class="flow-arrow">↓</div>
+          <div class="step-card highlight-step">
+            <span class="step-num">5</span>
+            <span class="step-label">Best Coordination Decision</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- 2. TRANSPORT NETWORK MODULE -->
+      <section class="module-card">
+        <div class="module-header">
+          <div class="module-icon">🛣️</div>
+          <div>
+            <h2 class="module-title">Transport Network</h2>
+            <p class="module-subtext">Dynamic congestion and capacity balancing</p>
+          </div>
+        </div>
+
+        <div class="roads-grid">
+          <div class="road-card pressure-high">
+            <div class="road-top">
+              <span class="road-name">Road A</span>
+              <span class="status-badge badge-high">High Pressure</span>
+            </div>
+            <div class="capacity-meter">
+              <div class="capacity-label">
+                <span>Capacity Usage</span>
+                <strong>90%</strong>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill fill-high" style="width: 90%;"></div>
+              </div>
+            </div>
+            <p class="road-note">Shortest direct path • Approaching critical congestion</p>
+          </div>
+
+          <div class="road-card pressure-medium">
+            <div class="road-top">
+              <span class="road-name">Road B</span>
+              <span class="status-badge badge-medium">Medium Pressure</span>
+            </div>
+            <div class="capacity-meter">
+              <div class="capacity-label">
+                <span>Capacity Usage</span>
+                <strong>45%</strong>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill fill-medium" style="width: 45%;"></div>
+              </div>
+            </div>
+            <p class="road-note">Slightly longer path • Ample buffer capacity available</p>
+          </div>
+        </div>
+
+        <div class="recommendation-box">
+          <div class="rec-header">
+            <span class="rec-icon">⚡</span>
+            <strong>Recommendation: Redirect suitable vehicles from Road A to Road B.</strong>
+          </div>
+          <p class="explanation-text">
+            "Instead of considering only the shortest road, UrbanFlow also considers congestion and road capacity."
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. LOGISTICS INFRASTRUCTURE MODULE (MAIN MODULE) -->
+      <section class="module-card main-feature-module" id="logistics-module">
+        <div class="main-module-ribbon">★ MAIN PROOF-OF-CONCEPT MODULE</div>
+        
+        <div class="module-header">
+          <div class="module-icon">🚚</div>
+          <div>
+            <h2 class="module-title">Smart Logistics Coordination</h2>
+            <p class="module-subtext">Pressure-aware fleet assignment and loading zone management</p>
+          </div>
+        </div>
+
+        <!-- Fleet & Zone Status Overview -->
+        <div class="status-overview-grid">
+          <!-- 3 Vehicles -->
+          <div class="sub-status-card">
+            <h3 class="sub-status-title">Vehicles (Fleet)</h3>
+            <div class="item-list">
+              <div class="entity-item" id="truck-t1">
+                <div class="entity-info">
+                  <span class="entity-icon">🚛</span>
+                  <span class="entity-id">T1</span>
+                </div>
+                <span class="status-badge badge-available">Available</span>
+              </div>
+              <div class="entity-item" id="truck-t2">
+                <div class="entity-info">
+                  <span class="entity-icon">🚛</span>
+                  <span class="entity-id">T2</span>
+                </div>
+                <span class="status-badge badge-delivering">Delivering</span>
+              </div>
+              <div class="entity-item" id="truck-t3">
+                <div class="entity-info">
+                  <span class="entity-icon">🚛</span>
+                  <span class="entity-id">T3</span>
+                </div>
+                <span class="status-badge badge-available">Available</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 Loading Zones -->
+          <div class="sub-status-card">
+            <h3 class="sub-status-title">Loading Zones</h3>
+            <div class="item-list">
+              <div class="entity-item" id="zone-l1">
+                <div class="entity-info">
+                  <span class="entity-icon">📦</span>
+                  <span class="entity-id">L1</span>
+                </div>
+                <span class="status-badge badge-busy">Busy</span>
+              </div>
+              <div class="entity-item" id="zone-l2">
+                <div class="entity-info">
+                  <span class="entity-icon">📦</span>
+                  <span class="entity-id">L2</span>
+                </div>
+                <span class="status-badge badge-available">Available</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decision Flow -->
+        <div class="subflow-box">
+          <div class="subflow-title">Coordination Decision Chain</div>
+          <div class="subflow-steps">
+            <div class="subflow-item">Delivery Request</div>
+            <div class="subflow-arrow">↓</div>
+            <div class="subflow-item">Check Available Vehicles</div>
+            <div class="subflow-arrow">↓</div>
+            <div class="subflow-item">Check Vehicle Capacity</div>
+            <div class="subflow-arrow">↓</div>
+            <div class="subflow-item">Check Loading Zone Availability</div>
+            <div class="subflow-arrow">↓</div>
+            <div class="subflow-item">Predict Waiting Time</div>
+            <div class="subflow-arrow">↓</div>
+            <div class="subflow-item subflow-winner">Select Best Truck + Zone</div>
+          </div>
+        </div>
+
+        <!-- Simulation Interactive Panel -->
+        <div class="simulation-panel">
+          <div class="sim-actions">
+            <button id="run-sim-btn" class="btn-primary">
+              <span class="btn-text">Run Coordination Simulation</span>
+            </button>
+            <button id="reset-sim-btn" class="btn-secondary" style="display: none;">
+              Reset Simulation
+            </button>
+          </div>
+
+          <div id="sim-status-box" class="sim-status-box idle">
+            <span id="sim-status-icon" class="status-symbol">ℹ️</span>
+            <span id="sim-status-text">Click "Run Coordination Simulation" to observe pressure-aware dispatching in real time.</span>
+          </div>
+        </div>
+
+        <!-- Simple Delivery Table -->
+        <div class="table-container">
+          <h3 class="table-title">Live Dispatch & Delivery Schedule</h3>
+          <table class="delivery-table">
+            <thead>
+              <tr>
+                <th>Delivery</th>
+                <th>Truck</th>
+                <th>Zone</th>
+                <th>Travel Time</th>
+                <th>Waiting Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="delivery-table-body">
+              <tr>
+                <td><strong>D1</strong></td>
+                <td>T1</td>
+                <td>L1</td>
+                <td>12 min</td>
+                <td>0 min</td>
+                <td><span class="status-badge badge-completed">Completed</span></td>
+              </tr>
+              <tr>
+                <td><strong>D2</strong></td>
+                <td>T2</td>
+                <td>L2</td>
+                <td>15 min</td>
+                <td>2 min</td>
+                <td><span class="status-badge badge-optimized">Optimized</span></td>
+              </tr>
+              <tr>
+                <td><strong>D3</strong></td>
+                <td>T3</td>
+                <td>L1</td>
+                <td>10 min</td>
+                <td>0 min</td>
+                <td><span class="status-badge badge-avoided">Waiting Avoided</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 4. CITY RESOURCES MODULE -->
+      <section class="module-card">
+        <div class="module-header">
+          <div class="module-icon">🅿️</div>
+          <div>
+            <h2 class="module-title">City Resource Coordination</h2>
+            <p class="module-subtext">Shared urban resource management: Parking example</p>
+          </div>
+        </div>
+
+        <div class="parking-grid">
+          <div class="resource-card pressure-high">
+            <div class="res-top">
+              <span class="res-name">Parking Zone A</span>
+              <span class="status-badge badge-high">High Pressure</span>
+            </div>
+            <div class="res-capacity">
+              <div class="capacity-label">
+                <span>Occupancy</span>
+                <strong>95% Occupied</strong>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill fill-high" style="width: 95%;"></div>
+              </div>
+            </div>
+            <p class="res-sub">City Center • Critical saturation, queue forming</p>
+          </div>
+
+          <div class="resource-card pressure-available">
+            <div class="res-top">
+              <span class="res-name">Parking Zone B</span>
+              <span class="status-badge badge-available">Available</span>
+            </div>
+            <div class="res-capacity">
+              <div class="capacity-label">
+                <span>Occupancy</span>
+                <strong>40% Occupied</strong>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill fill-available" style="width: 40%;"></div>
+              </div>
+            </div>
+            <p class="res-sub">Adjacent Hub • Ample capacity, immediate entry</p>
+          </div>
+        </div>
+
+        <div class="recommendation-box">
+          <div class="rec-header">
+            <span class="rec-icon">⚡</span>
+            <strong>Recommendation: Direct incoming vehicles to Parking Zone B.</strong>
+          </div>
+          <p class="explanation-text">
+            "UrbanFlow can apply the same pressure-aware coordination principle to shared urban resources."
+          </p>
+        </div>
+      </section>
+
+      <!-- 5. BASELINE VS URBANFLOW RESULTS -->
+      <section class="module-card results-module">
+        <div class="module-header">
+          <div class="module-icon">📊</div>
+          <div>
+            <h2 class="module-title">Baseline vs UrbanFlow Results</h2>
+            <p class="module-subtext">Quantifiable performance comparison across key urban metrics</p>
+          </div>
+        </div>
+
+        <div class="comparison-grid">
+          <!-- Baseline Card -->
+          <div class="comparison-card baseline-card">
+            <div class="comp-title-bar">
+              <span class="comp-tag">TRADITIONAL</span>
+              <h3>BASELINE</h3>
+              <p class="comp-desc">Greedy shortest-distance routing</p>
+            </div>
+            <div class="metric-list">
+              <div class="metric-row">
+                <span class="metric-label">Total Travel Time:</span>
+                <span class="metric-value">67 min</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Waiting Time:</span>
+                <span class="metric-value red-text">46 min</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Total Operational Time:</span>
+                <span class="metric-value">173 min</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">System Completion Time:</span>
+                <span class="metric-value">66 min</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- UrbanFlow Card -->
+          <div class="comparison-card urbanflow-card">
+            <div class="comp-title-bar">
+              <span class="comp-tag urban-tag">OPTIMIZED</span>
+              <h3>URBANFLOW</h3>
+              <p class="comp-desc">Pressure-aware holistic coordination</p>
+            </div>
+            <div class="metric-list">
+              <div class="metric-row">
+                <span class="metric-label">Total Travel Time:</span>
+                <span class="metric-value">73 min</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Waiting Time:</span>
+                <span class="metric-value green-text">14 min</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">Total Operational Time:</span>
+                <span class="metric-value green-text">147 min</span>
+              </div>
+              <div class="metric-row">
+                <span class="metric-label">System Completion Time:</span>
+                <span class="metric-value green-text">53 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Reductions / Highlights -->
+        <div class="metrics-highlight-row">
+          <div class="highlight-stat-card stat-primary">
+            <div class="stat-percentage">69.57%</div>
+            <div class="stat-caption">Reduction in Waiting Time</div>
+            <div class="stat-detail">46 min &rarr; 14 min</div>
+          </div>
+          <div class="highlight-stat-card stat-secondary">
+            <div class="stat-percentage">15.03%</div>
+            <div class="stat-caption">Reduction in Total Operational Time</div>
+            <div class="stat-detail">173 min &rarr; 147 min</div>
+          </div>
+          <div class="highlight-stat-card stat-tertiary">
+            <div class="stat-percentage">19.70%</div>
+            <div class="stat-caption">Faster System Completion</div>
+            <div class="stat-detail">66 min &rarr; 53 min</div>
+          </div>
+        </div>
+
+        <div class="tradeoff-note">
+          <span class="tradeoff-icon">⚖️</span>
+          <p>
+            <strong>Key Trade-off:</strong> "UrbanFlow may choose a slightly longer alternative when it significantly reduces waiting and overall system delay."
+          </p>
+        </div>
+      </section>
+
+      <!-- 6. FINAL KEY INSIGHT -->
+      <section class="module-card insight-module">
+        <h2 class="insight-heading">Core Paradigm Shift</h2>
+        
+        <div class="insight-comparison-grid">
+          <div class="insight-box traditional-box">
+            <div class="insight-label">Traditional Approach</div>
+            <div class="insight-quote">
+              "What is best for one vehicle?"
+            </div>
+            <p class="insight-sub">Focuses on local individual optimization, frequently causing systemic congestion, bottlenecks, and idle delays.</p>
+          </div>
+
+          <div class="insight-arrow">VS</div>
+
+          <div class="insight-box urbanflow-box">
+            <div class="insight-label">UrbanFlow Approach</div>
+            <div class="insight-quote">
+              "What decision creates the least pressure for the overall urban system?"
+            </div>
+            <p class="insight-sub">Evaluates live system capacity and balanced distribution to maximize overall city throughput and reliability.</p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="app-footer">
+      <p>UrbanFlow • Pressure-Aware Urban Coordination System • Student Hackathon Prototype</p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
